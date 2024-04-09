@@ -34,7 +34,7 @@ return [
       "type" => "withdrawalFunds",
 
       // Title can be trantaled or not, the language take the config app.locale
-      "title" => "icredit::credits.withdrawalFundsForm.requestable.title",
+      "title" => "withdrawalFunds",
 
       // Time elapsed to cancel in days
       "timeElapsedToCancel" => 30,
