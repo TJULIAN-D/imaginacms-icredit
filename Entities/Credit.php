@@ -3,18 +3,23 @@
 namespace Modules\Icredit\Entities;
 
 use Modules\Core\Icrud\Entities\CrudModel;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
+use Illuminate\Support\Str;
 
 //Static Classes
+use Modules\Icredit\Entities\Status;
 
 class Credit extends CrudModel
 {
-    public $transformer = 'Modules\Icredit\Transformers\CreditTransformer';
 
-    public $requestValidation = [
-        'create' => 'Modules\Icredit\Http\Requests\CreateCreditRequest',
-        'update' => 'Modules\Icredit\Http\Requests\UpdateCreditRequest',
-        'withdrawalFunds' => 'Modules\Icredit\Http\Requests\WithdrawalFundsCreditRequest',
-    ];
+
+  public $transformer = 'Modules\Icredit\Transformers\CreditTransformer';
+  public $repository = 'Modules\Icredit\Repositories\CreditRepository';
+  public $requestValidation = [
+    'create' => 'Modules\Icredit\Http\Requests\CreateCreditRequest',
+    'update' => 'Modules\Icredit\Http\Requests\UpdateCreditRequest',
+    'withdrawalFunds' => 'Modules\Icredit\Http\Requests\WithdrawalFundsCreditRequest'
+  ];
 
     protected $table = 'icredit__credits';
 
