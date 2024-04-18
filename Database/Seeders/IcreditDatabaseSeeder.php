@@ -2,22 +2,26 @@
 
 namespace Modules\Icredit\Database\Seeders;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Icommerce\Entities\PaymentMethod;
+use Modules\Isite\Jobs\ProcessSeeds;
 
 class IcreditDatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        Model::unguard();
+  /**
+   * Run the database seeds.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    Model::unguard();
+    ProcessSeeds::dispatch([
+      "baseClass" => "\Modules\Icredit\Database\Seeders",
+      "seeds" => ["IcreditModuleTableSeeder", "WithdrawalfundsFormTableSeeder"]
+    ]);
 
-        $this->call(IcreditModuleTableSeeder::class);
-
-        $this->call(WithdrawalfundsFormTableSeeder::class);
 
         $name = config('asgard.icredit.config.paymentName');
         $result = PaymentMethod::where('name', $name)->first();
