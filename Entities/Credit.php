@@ -50,7 +50,7 @@ class Credit extends CrudModel
         return $status->get($this->status);
     }
 
-    public function getOptioqnsAttribute($value)
+    public function getOptionsAttribute($value)
     {
         try {
             return json_decode(json_decode($value));
